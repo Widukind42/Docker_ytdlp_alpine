@@ -1,6 +1,6 @@
 yt-dlp
 ======
-
+date: 2026-08-03
 [`yt-dlp`][1] is a feature-rich command-line program to download videos from
 <https://www.youtube.com/> and many other sites. It is a fork of the original [`youtube-dl`][2].
 
