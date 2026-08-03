@@ -46,3 +46,30 @@ The directory yt_config holds the yt-dlp.conf file and an input URLs text file.
 [5]: https://github.com/blackjack4494/yt-dlc
 [6]: https://github.com/yt-dlp/yt-dlp/blob/master/LICENSE
 [7]: https://github.com/ytdl-org/youtube-dl/blob/master/LICENSE
+
+---
+- podman --version
+  podman version 5.4.2
+
+- cat /etc/os-release
+   NAME="Alpine Linux"
+   ID=alpine
+   VERSION_ID=3.24.1
+   PRETTY_NAME="Alpine Linux v3.24"
+   HOME_URL="https://alpinelinux.org/"
+   BUG_REPORT_URL="https://gitlab.alpinelinux.org/alpine/aports/-/issues"
+
+- yt-dlp --version
+   2026.07.04
+
+- deno --version
+   deno 2.7.4 (stable, release, x86_64-alpine-linux-musl)
+   v8 14.6.202.6-rusty
+   typescript 5.9.2
+
+- python3 --version
+   Python 3.14.5
+
+- fmpeg --version
+   ffmpeg version 8.1.2 Copyright (c) 2000-2026 the FFmpeg developers
+     built with gcc 15.2.0 (Alpine 15.2.0)
