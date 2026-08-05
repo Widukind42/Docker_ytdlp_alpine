@@ -1,7 +1,8 @@
-# including my config file with private dev repo and username
+# including my config file with private dev and username
 include ../.config/Makefile
 
 # Variablen definieren
+REPO := Docker_ytdlp_alpine
 IMAGE_NAME := ytdlp_alpine
 CONTAINER_NAME := ytdlp_alpine_container
 DOCKERFILE := Dockerfile
