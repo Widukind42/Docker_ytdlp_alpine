@@ -14,6 +14,10 @@ The project was originally inspired by [`tanja84dk/Docker-yt-dlp`][3]. I had use
 After receiving a warning that Python 3.10 is outdated and Deno became a recommended add-on, I started testing which amendments to her Dockerfile could fulfill my intended changes.
 With some help from Mistral/Le Chat, I decided to switch to Alpine Linux.
 
+Used Images
+===========
+see `Dockerfile`
+
 ## Tutorial
 
 ```sh
@@ -32,6 +36,9 @@ Here’s an example of how I use it myself:
 podman run --rm -it -v "$(pwd):/out:z" ytdlp-alpine --config-locations ./youtube_config/
 ```
 The directory yt_config holds the yt-dlp.conf file and an input URLs text file.
+
+## Link of the image
+`ghcr.io/widukind42/ytdlp_alpine`
 
 ## Credits
  - Credit to [`youtube-dl`][2] for the original project Licensed under [`The Unlicense`][7]
