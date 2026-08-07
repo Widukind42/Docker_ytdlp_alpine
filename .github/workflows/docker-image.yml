@@ -1,5 +1,7 @@
 name: Docker Image CI
-
+env:
+  ACT: debug
+  
 on:
   push:
     branches: [ "main" ]
