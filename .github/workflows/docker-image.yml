@@ -22,6 +22,7 @@ jobs:
           echo "Registry: ghcr.io"
           echo "Username: ${{ github.actor }}"
           echo "Repository: ${{ github.repository }}"
+          echo "Token: ${{ secrets.GHCR_TOKEN }}"
 
       - name: Checkout repository
         uses: actions/checkout@v4
