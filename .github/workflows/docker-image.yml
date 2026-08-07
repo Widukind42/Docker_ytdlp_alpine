@@ -15,8 +15,7 @@ jobs:
     permissions:
       contents: read
       packages: write  # Erlaubt das Pushen zu GHCR
-    env:
-      REPOSITORY_OWNER_LOWER: ${{ toLower(github.repository_owner) }}
+    
     steps:
       - name: Debug variables
         run: |
@@ -25,7 +24,7 @@ jobs:
           echo "Repository: ${{ github.repository }}"
           echo "Token: ${{ secrets.GITHUB_TOKEN }}"
           echo "ghcr Token: ${{ secrets.GHCR_TOKEN }}"
-          echo "Repository Owner lowercase: $REPOSITORY_OWNER_LOWER"
+          
       
       - name: Checkout repository
         uses: actions/checkout@v4
