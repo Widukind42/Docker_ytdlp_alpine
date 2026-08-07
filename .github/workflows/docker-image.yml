@@ -2,7 +2,6 @@ name: Docker Image CI
 
 env:
   ACT: debug
-  REPOSITORY_OWNER_LOWER: ${{ toLower(github.repository_owner) }}
 
 on:
   push:
@@ -16,7 +15,8 @@ jobs:
     permissions:
       contents: read
       packages: write  # Erlaubt das Pushen zu GHCR
-
+    env:
+      REPOSITORY_OWNER_LOWER: ${{ toLower(github.repository_owner) }}
     steps:
       - name: Debug variables
         run: |
@@ -24,7 +24,8 @@ jobs:
           echo "Username: ${{ github.actor }}"
           echo "Repository: ${{ github.repository }}"
           echo "Token: ${{ secrets.GITHUB_TOKEN }}"
-          echo "Repository_Owner in lowercase: $REPOSITORY_OWNER_LOWER"
+          echo "ghcr Token: ${{ secrets.GHCR_TOKEN }}"
+          echo "Repository Owner lowercase: $REPOSITORY_OWNER_LOWER"
       
       - name: Checkout repository
         uses: actions/checkout@v4
