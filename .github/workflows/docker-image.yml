@@ -2,6 +2,7 @@ name: Docker Image CI
 
 env:
   ACT: debug
+  REPOSITORY_OWNER_LOWER: ${{ toLower(github.repository_owner) }}
 
 on:
   push:
@@ -23,6 +24,7 @@ jobs:
           echo "Username: ${{ github.actor }}"
           echo "Repository: ${{ github.repository }}"
           echo "Token: ${{ secrets.GITHUB_TOKEN }}"
+          echo "Repository_Owner in lowercase: $REPOSITORY_OWNER_LOWER"
       
       - name: Checkout repository
         uses: actions/checkout@v4
