@@ -9,7 +9,12 @@ on:
     branches: [ "main" ]
 
 jobs:
-
+  - name: Debug variables
+      run: |
+      echo "Registry: ghcr.io"
+      echo "Username: ${{ github.actor }}"
+      echo "Repository: ${{ github.repository }}"
+      
   build:
 
     runs-on: ubuntu-latest
