@@ -23,12 +23,7 @@ jobs:
           echo "Username: ${{ github.actor }}"
           echo "Repository: ${{ github.repository }}"
           echo "Token: ${{ secrets.GITHUB_TOKEN }}"
-      - name: Convert and store lowercase
-        run: |
-          UPPERCASE_STRING="${{ github.repository_owner }}"
-          LOWERCASE_STRING=$(echo "$UPPERCASE_STRING" | tr '[:upper:]' '[:lower:]')
-          echo "LOWERCASE_STRING=$LOWERCASE_STRING" >> $GHCR_REPOSITORY_OWNER  # Speichere in Umgebungsvariablen
-
+      
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -42,4 +37,4 @@ jobs:
       - name: Build and push Docker image
         run: |
           docker build . --file Dockerfile --tag ghcr.io/${{ github.repository_owner }}/ytdlp_alpine:latest
-          docker push ghcr.io/$GHCR_REPOSITORY_OWNER/ytdlp_alpine:latest
+          docker push ghcr.io/widukind42/ytdlp_alpine:latest
