@@ -1,0 +1,6 @@
+{
+  "event": "yt-dlp-release",
+  "client_payload": {
+    "release_tag": "{{release.tag_name}}"
+  }
+}
