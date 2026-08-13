@@ -14,8 +14,8 @@ RUN apk update && \
     git \
     && pip3 install --break-system-packages --upgrade pip
 
-# yt-dlp installieren
-RUN pip3 install --break-system-packages yt-dlp
+# yt-dlp installieren mit curl-cffi wie beschrieben in https://github.com/yt-dlp/yt-dlp/issues/15273
+RUN pip3 install -U --break-system-packages --no-cache-dir  "yt-dlp[default,curl-cffi]"
 
 
 # Arbeitsverzeichnis festlegen

@@ -1,6 +1,6 @@
 yt-dlp
 ======
-date: 2026-08-03
+date: 2026-08-13
 
 [`yt-dlp`][1] is a feature-rich command-line program to download videos from
 <https://www.youtube.com/> and many other sites. It is a fork of the original [`youtube-dl`][2].
@@ -13,6 +13,10 @@ The project was originally inspired by [`tanja84dk/Docker-yt-dlp`][3]. I had use
 
 After receiving a warning that Python 3.10 is outdated and Deno became a recommended add-on, I started testing which amendments to her Dockerfile could fulfill my intended changes.
 With some help from Mistral/Le Chat, I decided to switch to Alpine Linux.
+
+Extensions to the Original Concept
+==================================
+In addition to updating the Python environment, I have added the deno and curl_cffi extensions recommended by yt-dlp.
 
 Used Images
 ===========
