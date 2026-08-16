@@ -1,0 +1,80 @@
+name: Alpine Linux Update Check
+
+on:
+  schedule:
+    # Täglich um 06:00 UTC prüfen
+    - cron: '0 6 * * *'
+  workflow_dispatch:  # Manuell auslösbar
+
+jobs:
+  check-alpine-update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Check Alpine version
+        id: check
+        run: |
+          # Aktuelle Alpine-Version aus Docker Hub abrufen
+          CURRENT_VERSION=$(grep -oP 'FROM alpine:\K[^ ]+' Dockerfile)
+          echo "Current version in Dockerfile: $CURRENT_VERSION"
+          echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+          
+          # Verfügbare Alpine-Versionen abrufen
+          LATEST_VERSION=$(curl -s https://registry.hub.docker.com/v2/library/alpine/tags/list | \
+            jq -r '.tags[] | select(test("^[0-9]+\\.[0-9]+$"))' | \
+            sort -V | tail -1)
+          
+          echo "Latest Alpine version: $LATEST_VERSION"
+          echo "latest_version=$LATEST_VERSION" >> $GITHUB_OUTPUT
+          
+          # Vergleichen
+          if [ "$CURRENT_VERSION" != "$LATEST_VERSION" ]; then
+            echo "update_available=true" >> $GITHUB_OUTPUT
+          else
+            echo "update_available=false" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Update Dockerfile
+        if: steps.check.outputs.update_available == 'true'
+        run: |
+          CURRENT=${{ steps.check.outputs.current_version }}
+          LATEST=${{ steps.check.outputs.latest_version }}
+          sed -i "s/FROM alpine:${CURRENT}/FROM alpine:${LATEST}/" Dockerfile
+          echo "✅ Dockerfile updated: alpine:${CURRENT} → alpine:${LATEST}"
+      
+      - name: Create Pull Request
+        if: steps.check.outputs.update_available == 'true'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'deps: update Alpine Linux to ${{ steps.check.outputs.latest_version }}'
+          title: 'chore: update Alpine Linux to ${{ steps.check.outputs.latest_version }}'
+          body: |
+            ## Alpine Linux Update
+            
+            **Current version:** `${{ steps.check.outputs.current_version }}`
+            **New version:** `${{ steps.check.outputs.latest_version }}`
+            
+            This PR automatically updates the Alpine Linux base image to the latest stable version.
+            
+            ✅ Please review and test before merging.
+          branch: alpine-update/${{ steps.check.outputs.latest_version }}
+          delete-branch: true
+          labels: dependencies, alpine
+          assignees: Widukind42
+      
+      - name: Summary
+        run: |
+          echo "## Alpine Update Check Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Key | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Current Version | ${{ steps.check.outputs.current_version }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Latest Version | ${{ steps.check.outputs.latest_version }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Update Available | ${{ steps.check.outputs.update_available }} |" >> $GITHUB_STEP_SUMMARY
