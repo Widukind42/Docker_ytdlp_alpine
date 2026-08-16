@@ -15,7 +15,7 @@ jobs:
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       
       - name: Check Alpine version
         id: check
@@ -50,7 +50,7 @@ jobs:
       
       - name: Create Pull Request
         if: steps.check.outputs.update_available == 'true'
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: 'deps: update Alpine Linux to ${{ steps.check.outputs.latest_version }}'
