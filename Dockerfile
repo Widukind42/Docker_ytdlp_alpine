@@ -1,5 +1,5 @@
 # Basis-Image: Alpine Linux
-FROM alpine:latest
+FROM alpine:3
 
 # Paketquellen aktualisieren und Abhängigkeiten installieren
 RUN apk update && \
