@@ -1,3 +1,4 @@
+### Package Inventory (Stand: 2026-08-23)
 - Alpine Linux v3.24
 - Python 3.14.7
 - yt-dlp version 2026.08.19
