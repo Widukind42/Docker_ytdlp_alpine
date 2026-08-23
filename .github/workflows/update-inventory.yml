@@ -31,7 +31,7 @@ jobs:
             -v "$(pwd):/out:z" \
             --entrypoint /bin/sh \
             ghcr.io/widukind42/ytdlp_alpine \
-            ./github/scripts/show-container-releases.sh > ./PackageInventory.md
+            ./.github/scripts/show-container-releases.sh > ./PackageInventory.md
 
       - name: Änderungen commiten
         run: |
