@@ -23,7 +23,7 @@ jobs:
           echo "$(pwd)"
           ls -al
           podman --version
-          echo "### Package Inventory (Stand: $(date +"%Y-%m-%d"))" >> ./PackageInventory.md
+          echo "### Package Inventory (Stand: $(date +"%Y-%m-%d"))" > ./PackageInventory.md
 
       - name: Container starten und Skript ausführen (Alpine)
         run: |
@@ -31,12 +31,12 @@ jobs:
             -v "$(pwd):/out:z" \
             --entrypoint /bin/sh \
             ghcr.io/widukind42/ytdlp_alpine \
-            ./.github/scripts/show-container-releases.sh > ./PackageInventory.md
+            ./.github/scripts/show-container-releases.sh >> ./PackageInventory.md
 
       - name: Änderungen commiten
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          git add PackageInventory.md
+          git add ./PackageInventory.md
           git commit -m "Update release info [skip ci]"
           git push
