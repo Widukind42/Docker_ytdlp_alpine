@@ -1,9 +1,7 @@
 name: Update Inventory Info
 on: [push]
-  workflow_dispatch:  # Manuell auslösbar
 
 jobs:
-  update-inventory:
   update-inventory:
     runs-on: ubuntu-latest
     permissions:
