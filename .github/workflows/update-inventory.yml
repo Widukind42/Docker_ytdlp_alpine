@@ -23,7 +23,7 @@ jobs:
           echo "$(pwd)"
           ls -al
           podman --version
-          echo "### Package Inventory (Stand: $(date +"%Y-%m-%d"))" > ./PackageInventory.md
+          echo "### Package Inventory (Stand: $(date +"%Y-%m-%d"))" >> ./PackageInventory.md
 
       - name: Container starten und Skript ausführen (Alpine)
         run: |
