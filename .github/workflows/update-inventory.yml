@@ -1,0 +1,29 @@
+name: Update Inventory Info
+on: [push]
+
+jobs:
+  update-inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      - name: Skript ausführbar machen
+        run: chmod +x ./github/scripts/show-container-releases.sh
+
+      - name: Container starten und Skript ausführen (Alpine)
+        run: |
+          podman run --rm \
+            -v "$(pwd):/out:z" \
+            -w /out:z \
+            --entrypoint /bin/sh \
+            ghcr.io/widukind42/ytdlp_alpine \
+            "./github/scripts/show-container-releases.sh"
+
+      - name: Änderungen commiten
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add PackageInventory.md
+          git commit -m "Update release info [skip ci]"
+          git push
