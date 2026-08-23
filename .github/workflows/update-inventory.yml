@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Skript ausführbar machen
-        run: chmod +x ./github/scripts/show-container-releases.sh
+        run: chmod +x ./.github/scripts/show-container-releases.sh
 
       - name: run container
         id: check
