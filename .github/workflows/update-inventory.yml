@@ -22,13 +22,13 @@ jobs:
           set -euo pipefail
           echo "$(pwd)"
           ls -al
+          podman --version
           echo "### Package Inventory (Stand: $(date +"%Y-%m-%d"))" > ./PackageInventory.md
 
       - name: Container starten und Skript ausführen (Alpine)
         run: |
           podman run --rm \
             -v "$(pwd):/out:z" \
-            -w /out:z \
             --entrypoint /bin/sh \
             ghcr.io/widukind42/ytdlp_alpine \
             ./github/scripts/show-container-releases.sh > ./PackageInventory.md
