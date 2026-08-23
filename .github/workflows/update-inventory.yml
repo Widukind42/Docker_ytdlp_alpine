@@ -12,10 +12,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-     - name: Skript ausführbar machen
+      - name: Skript ausführbar machen
         run: chmod +x ./github/scripts/show-container-releases.sh
 
-     - name: run container
+      - name: run container
         id: check
         run: |
           #!/usr/bin/env bash
