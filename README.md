@@ -44,6 +44,9 @@ The directory yt_config holds the yt-dlp.conf file and an input URLs text file.
 ## Link of the image
 `ghcr.io/widukind42/ytdlp_alpine`
 
+## Package Inventory
+Release informations of the used software in the currect image are listed in [`PackageInventory.md`][4].
+
 ## Credits
  - Credit to [`youtube-dl`][2] for the original project Licensed under [`The Unlicense`][7]
  - Credit to [`yt-dlp`][1] for their updated fork of youtube-dl Licensed under [`The Unlicense`][6]
@@ -53,7 +56,7 @@ The directory yt_config holds the yt-dlp.conf file and an input URLs text file.
 [1]: https://github.com/yt-dlp/yt-dlp
 [2]: https://ytdl-org.github.io/youtube-dl/
 [3]: https://hub.docker.com/r/tanja84dk/yt-dlp
-[4]: empty
+[4]: ./PackageInventory.md
 [5]: https://github.com/blackjack4494/yt-dlc
 [6]: https://github.com/yt-dlp/yt-dlp/blob/master/LICENSE
 [7]: https://github.com/ytdl-org/youtube-dl/blob/master/LICENSE
