@@ -18,6 +18,11 @@ RUN apk update && \
 # 2026-0821 back from --pre to stable-- History: Inserted "--pre" as describes in https://github.com/yt-dlp/yt-dlp/issues/17456#issuecomment-5325954656
 RUN pip3 install --break-system-packages --no-cache-dir --upgrade "yt-dlp[default,curl-cffi]"
 
+# Try to run it so we know it works
+RUN yt-dlp --version
+
+RUN yt-dlp --list-impersonate-targets
+
 
 # Arbeitsverzeichnis festlegen
 WORKDIR /out
