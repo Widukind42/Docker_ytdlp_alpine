@@ -1,5 +1,6 @@
 # Ausgabe der Release-Stande aus dem Container
 # Einlesen des os-relaese, um den inhalt als Variable ausgeben zu können "
+# curl and yt-dlp-ejs addad on 2026-09-01
 . /etc/os-release
 echo "- $PRETTY_NAME"
 echo "- $(python3 --version)"
