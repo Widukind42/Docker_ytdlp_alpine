@@ -1,6 +1,8 @@
-### Package Inventory (Stand: 2026-08-26 16:27:05 UTC)
+### Package Inventory (Stand: 2026-09-01 16:03:51 UTC)
 - Alpine Linux v3.24
 - Python 3.14.7
+  - yt-dlp-ejs version 0.8.0
+  - curl_cffi version 0.16.2
 - yt-dlp version 2026.08.19
 - ffmpeg version 8.1.2 Copyright (c) 2000-2026 the FFmpeg developers
 - ffprobe version 8.1.2 Copyright (c) 2007-2026 the FFmpeg developers
