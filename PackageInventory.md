@@ -1,6 +1,6 @@
-### Package Inventory (Stand: 2026-09-26 10:17:33 UTC)
+### Package Inventory (Stand: 2026-10-13 13:35:05 UTC)
 - Alpine Linux v3.24
-- Python 3.14.7
+- Python 3.14.8
   - yt-dlp-ejs version 0.8.0
   - curl_cffi version 0.16.3
 - yt-dlp version 2026.08.19
